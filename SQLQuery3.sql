@@ -1,0 +1,1 @@
+﻿INSERT INTO dbo.Customers(Name, Age) VALUES ('Morbius', 3000)

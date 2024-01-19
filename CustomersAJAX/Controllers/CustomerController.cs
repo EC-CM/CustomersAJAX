@@ -1,4 +1,5 @@
-﻿using CustomersAJAX.Models;
+﻿using CustomersAJAX.Data;
+using CustomersAJAX.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace CustomersAJAX.Controllers
 
         public CustomerController()
         {
+            /*
             customers = new List<Customer>();
             customers.Add(new Customer(0, "Sherry", 37));
             customers.Add(new Customer(1, "Tim", 12));
@@ -24,14 +26,18 @@ namespace CustomersAJAX.Controllers
             customers.Add(new Customer(4, "Elijah", 51));
             customers.Add(new Customer(5, "Howard", 64));
             customers.Add(new Customer(6, "Dave", 34));
+            */
         }
 
         public ActionResult Index()
         {
-            Tuple<List<Customer>, Customer> tuple;
-            tuple = new Tuple<List<Customer>, Customer>(customers, customers[0]);
+            //Tuple<List<Customer>, Customer> tuple;
+            //tuple = new Tuple<List<Customer>, Customer>(customers, customers[0]);
+            List<Customer> customers = new List<Customer>();
+            customerDAO customerDBObject = new customerDAO();
+            customers = customerDBObject.FetchAll();
 
-            return View("Customer", tuple);
+            return View("Customer", customers);
 
         }
 
